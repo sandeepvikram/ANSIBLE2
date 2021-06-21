@@ -8,6 +8,6 @@
        msg: inventory value is "{{var1}}"
    - name: Debugger demo
      file:
-      path: {file-path}
+      path: "{{file-path}}"
       state: touch
 
