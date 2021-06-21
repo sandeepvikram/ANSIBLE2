@@ -1,0 +1,14 @@
+---
+- name: Install Softwares
+  import_playbook: sample1.yml
+  vars:
+    install_softwares:
+      - git
+      - tree
+      - wget 
+      - elinks
+
+  
+     
+
+   

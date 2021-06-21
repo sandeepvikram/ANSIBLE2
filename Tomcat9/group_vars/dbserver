@@ -1,0 +1,17 @@
+---
+java_package: openjdk-11-jdk
+tomcat_download_url: https://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.46/bin/apache-tomcat-9.0.46.tar.gz
+tomcat_download_destination: /tmp/apache-tomcat-9.0.46.tar.gz
+tomcat_group: tomcat
+tomcat_user: tomcat
+tomcat_directory: /opt/tomcat 
+tomcat_shell: /bin/false
+tomcat_check_dir: /opt/tomcat/conf
+tomcat_directories_for_group_permissions:
+  - /opt/tomcat/webapps
+  - /opt/tomcat/work
+  - /opt/tomcat/temp
+  - /opt/tomcat/logs
+tomcat_service_file: /etc/systemd/system/tomcat.service
+tomcat_description: Apache Tomcat Web Application Container by DevOps Team
+java_executable: /usr/lib/jvm/java-1.11.0-openjdk-amd64  

@@ -1,0 +1,20 @@
+---
+- name: Install Utility softwares
+  become: yes
+  hosts: all
+  tasks:
+    - name: Install python apt
+      apt:
+        name: python-apt
+        update_cache: yes
+        state: present
+    - name: Install Softwares
+      package:
+        name: "{{item}}"
+        state: present
+      loop: "{{install_softwares}}"
+    - name: Install Java
+      apt: 
+        name: openjdk-11-jdk
+        state: present
+         

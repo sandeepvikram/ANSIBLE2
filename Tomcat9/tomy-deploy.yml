@@ -1,0 +1,72 @@
+---
+- name: Installing tomcat 9
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update Ubuntu packages and install open-JDK11
+      apt:
+        name: "{{java_package}}"
+        update_cache: yes
+        state: present
+    - name: Ensure group tomcat exists
+      group:
+        name: "{{tomcat_group}}"
+        state: present 
+    - name: Ensure tomcat home directory exsists
+      file:
+        path: "{{tomcat_directory}}"
+        state: directory        
+    - name: Ensure user tomcat exsists
+      user:
+        name: "{{tomcat_user}}"
+        group: "{{tomcat_group}}"
+        home: "{{tomcat_directory}}"
+        shell: "{{tomcat_shell}}" 
+    - name: Download tomcat
+      get_url:
+        url: "{{tomcat_download_url}}"
+        dest: "{{tomcat_download_destination}}"
+    - name: extract tomcat packages
+      unarchive:
+        src: "{{tomcat_download_destination}}"
+        dest: "{{tomcat_directory}}"
+        remote_src: yes
+        extra_opts: [--strip-components=1]    
+    - name: update group permissions for tomcat dir
+      file:
+        path: "{{ tomcat_directory }}"
+        group: "{{ tomcat_group }}"
+        owner: "{{ tomcat_group }}"
+        recurse: yes
+        state: directory
+    - name: update group permissions for tomcat conf directory
+      file:
+        path: "{{ tomcat_check_dir }}" 
+        mode: u=rwx,g=rx
+        state: directory
+    - name: update recursive ownership for tomcat
+      file:
+        path: "{{ item }}"
+        recurse: true
+        group: "{{ tomcat_group }}"
+        owner: "{{ tomcat_group }}"
+        state: directory
+      loop: "{{ tomcat_directories_for_group_permissions }}"
+    - name: copy the tomcat service
+      template:
+        src: tomcat.service.j2
+        dest: "{{ tomcat_service_file }}"
+      notify:
+        - reload daemon
+    - name: enable and start tomcat service
+      service: 
+        name: tomcat.service
+        enabled: yes
+        state: started      
+  handlers:
+    - name: reload daemon
+      systemd:
+        name: tomcat.service
+        daemon_reload: yes
+        state: started          
+    
