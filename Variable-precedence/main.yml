@@ -3,11 +3,12 @@
   hosts: all
   debugger: on_failed
   tasks:
-   - name: Variable Precedence
-     debug: 
-       msg: inventory value is "{{var1}}"
    - name: Debugger demo
      file:
       path: "{{file-path}}"
-      state: touch
+      state: touch 
+   - name: Variable Precedence
+     debug: 
+       msg: inventory value is "{{var1}}"
+   
 
