@@ -4,5 +4,4 @@
   tasks:
    - name: Variable Precedence
      debug: 
-       msg: inventory value "{{var1}}"
-       
+       msg: inventory value is "{{var1}}"
