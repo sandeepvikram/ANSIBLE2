@@ -1,0 +1,10 @@
+---
+- name: installed 'apache2' server
+  debug:
+    msg: "apache server is installed using package 'apache2'"
+- name: installed 'httpd' server
+  debug:
+    msg: "httpd server is installed using package 'httpd'"
+- name: log info page is copied
+  debug:
+    msg: "info page copied to {{info_page_path}}"   

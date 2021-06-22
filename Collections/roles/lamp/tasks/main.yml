@@ -1,0 +1,35 @@
+---
+- name: Execution Fail if the distribution is not Ubuntu
+  fail:
+    msg: The playbook only supports Ubuntu distributions
+  when: ansible_facts ['distribution'] != "Ubuntu" and ansible_facts ['distribution'] != "CentOS"
+- name: Install LAMP Packages for Ubuntu
+  apt: name={{ item }} update_cache=yes state=latest
+  loop: [ 'apache2', 'python3-pymysql', 'php', 'php-mysql', 'libapache2-mod-php' ]
+  when: "'{{ ansible_distribution}}' == 'Ubuntu'"
+  notify:
+    installed 'apache2' server
+- name: Install LAMP Packages for CentOS
+  yum: name={{ item }}  state=latest
+  loop: [ 'httpd', 'php', 'php-mysql', 'php-fpm' ]
+  when: "'{{ ansible_distribution}}' == 'CentOS'" 
+  notify:
+    installed 'httpd' server 
+- name: copy the php info page
+  copy:
+    dest: "{{info_page_path}}"
+    src: "info.php"
+  notify:
+    - log info page is copied      
+- name: ensure the apache2 service is running
+  service:
+    name: 'apache2'
+    enabled: yes
+    state: started
+  when: "'{{ ansible_distribution}}' == 'Ubuntu'"   
+- name: ensure the httpd service is running
+  service:
+    name: 'httpd'
+    enabled: yes
+    state: started
+  when: "'{{ ansible_distribution}}' == 'CentOS'"

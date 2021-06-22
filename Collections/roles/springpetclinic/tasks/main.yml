@@ -1,0 +1,47 @@
+---
+- name: Execution Fail if the distribution is not Ubuntu
+  fail:
+    msg: The playbook only supports Ubuntu distributions
+  when: ansible_facts ['distribution'] != "Ubuntu" and ansible_facts ['distribution'] != "CentOS"    
+- name: Update Ubuntu packages and install open-JDK11
+  apt:
+    name: "{{java_package1}}"
+    update_cache: yes
+    state: present 
+  notify:
+    - Packages Installed1
+  when: ansible_facts ['distribution'] == "Ubuntu"
+- name: Update CentOS Packages and install Java
+  yum:
+    name: "{{java_package2}}" 
+    state: present
+  notify:
+    - Packages Installed2  
+  when: ansible_facts ['distribution'] == "CentOS"
+- name: Create a Spring pet Clinic Directory
+  ansible.builtin.file:
+    path: "{{app_dir}}"
+    state: directory
+  notify: 
+    - Created a Directory                    
+- name: Download SpringPet Clinic
+  get_url:
+    url: "{{app_download_url}}"
+    dest: "{{app_filename}}" 
+- name: Create a Springbootuser
+  user:
+    name: "{{app_username}}"
+    password: "{{app_username}}"
+    state: present
+  notify:
+    - Change the ownership of Springboot
+- name: Copy the springpetclinic.service
+  copy:
+    dest: /etc/systemd/system/springpetclinic.service
+    src: springpetclinic.service
+- name: Start springpetclinic.service
+  systemd:
+    name: springpetclinic.service
+    enabled: yes
+    state: started                 
+    
