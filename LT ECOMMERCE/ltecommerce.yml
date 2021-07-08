@@ -1,0 +1,19 @@
+---
+- name: Installing NOP ecommerce
+  hosts: all
+  become: yes
+  tasks:
+    - name: Getting the microsoft packages
+      get_url: 
+        url: "{{nopecommerce_download_url}}"
+        dest: "{{nopecommerce_download_destination}}"
+        
+    - name: Install a .deb package
+      apt:
+        deb: "{{nopecommerce_download_destination}}"
+    - name: Install dotnet packages
+      apt:
+        update_cache: yes
+        name: "{{nopecommerce_dotnet_packages}}"
+        state: present
+              

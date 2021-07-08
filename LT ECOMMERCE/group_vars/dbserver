@@ -1,0 +1,6 @@
+---
+nopecommerce_download_url: https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+nopecommerce_download_destination: /tmp/packages-microsoft-prod.deb
+nopecommerce_dotnet_packages: 
+  - apt-transport-https
+  - aspnetcore-runtime-3.1
