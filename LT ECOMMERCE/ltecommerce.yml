@@ -44,9 +44,9 @@
       file: name={{ item }} state=directory
       loop: ['bin', 'logs']
     - name: Change group Permissions for Nop ecommerce
-      command: sudo chgrp -R www-data {{ nginx_home_dir }}/
+      command: chgrp -R www-data {{ nginx_home_dir }}/
     - name: Change ownership for Nop ecommerce
-      command: sudo chown -R www-data {{ nginx_home_dir }}/
+      command: chown -R www-data {{ nginx_home_dir }}/
 
   
 
