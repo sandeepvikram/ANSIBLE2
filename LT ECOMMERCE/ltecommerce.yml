@@ -7,13 +7,15 @@
       get_url: 
         url: "{{nopecommerce_download_url}}"
         dest: "{{nopecommerce_download_destination}}"
-      notify: Installed microsoft packages    
+      notify: 
+        Installed microsoft packages    
         
     - name: Install a .deb package
       apt:
         update_cache: yes
         deb: "{{nopecommerce_download_destination}}"
-      notify: Installed .deb packages  
+      notify: 
+        Installed .deb packages  
     - name: Install dotnet packages
       apt:
         name: "{{nopecommerce_dotnet_packages}}"
@@ -25,7 +27,8 @@
       apt:
         name: "{{nopecommerce_nginx_package}}"
         state: present 
-      notify: Installed nginx  
+      notify:
+        Installed nginx  
     - name: sites available
       copy:
         src: default
@@ -75,7 +78,7 @@
     - name: Installed nginx
       debug:
         msg: "Installed nginx"
-           
+
 
 
   
