@@ -39,5 +39,8 @@
       unarchive:
         src: "{{nopecommerce_download_temp_location}}"
         dest: "{{nginx_home_dir}}"
-        remote_src: yes    
+        remote_src: yes
+    - name: Create bin logs directories
+      file: name={{ item }} state=directory
+      loop: ['bin', 'logs']        
               
