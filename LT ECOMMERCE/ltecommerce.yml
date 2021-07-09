@@ -8,7 +8,7 @@
         url: "{{nopecommerce_download_url}}"
         dest: "{{nopecommerce_download_destination}}"
       notify:
-      - Installed microsoft packages
+        - Packages Installed
 
     - name: Install a .deb package
       apt:
@@ -69,7 +69,7 @@
         state: restarted 
   
   handlers:
-    - name: Installed microsoft packages
+    - name: Packages Installed
       debug:
         msg: Installed microsoft packages     
     - name: Installed .deb packages
