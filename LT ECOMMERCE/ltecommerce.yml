@@ -10,10 +10,14 @@
         
     - name: Install a .deb package
       apt:
+        update_cache: yes
         deb: "{{nopecommerce_download_destination}}"
     - name: Install dotnet packages
       apt:
-        update_cache: yes
         name: "{{nopecommerce_dotnet_packages}}"
         state: present
+    - name: Install Nginx
+      apt:
+        name: "{{nopecommerce_nginx_package}}"
+        state: present    
               
