@@ -42,5 +42,9 @@
         remote_src: yes
     - name: Create bin logs directories
       file: name={{ item }} state=directory
-      loop: ['bin', 'logs']        
+      loop: ['bin', 'logs']
+    - name: Change group Permissions for Nop ecommerce
+      command: sudo chgrp -R www-data {{ nginx_home_dir }}/
+      
+
               
