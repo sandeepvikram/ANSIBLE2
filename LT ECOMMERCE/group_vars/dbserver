@@ -3,4 +3,5 @@ nopecommerce_download_url: https://packages.microsoft.com/config/ubuntu/18.04/pa
 nopecommerce_download_destination: /tmp/packages-microsoft-prod.deb
 nopecommerce_dotnet_packages: 
   - apt-transport-https
-nopecommerce_nginx_package: nginx  
+nopecommerce_nginx_package: nginx 
+nginx_default_dest: /etc/nginx/sites-available/default 

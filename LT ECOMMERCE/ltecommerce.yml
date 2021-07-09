@@ -22,5 +22,11 @@
     - name: Install Nginx
       apt:
         name: "{{nopecommerce_nginx_package}}"
-        state: present    
+        state: present 
+    - name: sites available
+      copy:
+        src: default
+        dest: "{{nginx_default_dest}}"
+        
+
               
