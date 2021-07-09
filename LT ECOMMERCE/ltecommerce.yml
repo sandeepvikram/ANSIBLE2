@@ -51,7 +51,11 @@
       template:
         src: nopecommerce.service.j2
         dest: "{{nopecommerce_service_file}}"  
-    
+    - name: Enable nopecommerce service file
+      ansible.builtin.systemd:
+        name: nopecommerce440
+        state: started
+        enabled: yes
      
   
 
