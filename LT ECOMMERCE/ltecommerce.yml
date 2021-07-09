@@ -16,6 +16,9 @@
       apt:
         name: "{{nopecommerce_dotnet_packages}}"
         state: present
+    - name: Install aspnet core package
+      apt: name={{ item }}  state=latest
+      loop: ['aspnetcore-runtime-3.1']    
     - name: Install Nginx
       apt:
         name: "{{nopecommerce_nginx_package}}"
