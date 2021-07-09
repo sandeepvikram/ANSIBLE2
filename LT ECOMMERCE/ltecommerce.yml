@@ -51,7 +51,16 @@
       template:
         src: nopecommerce.service.j2
         dest: "{{nopecommerce_service_file}}"
-         
+    - name: Enable and start nopecommerce service
+      service:
+        name: ltecommerce.service
+        enabled: yes
+        state: started
+    - name: Restart nginx
+      service:
+        name: "{{nopecommerce_nginx_package}}"
+        enabled: yes
+        state: restarted         
 
   
 
