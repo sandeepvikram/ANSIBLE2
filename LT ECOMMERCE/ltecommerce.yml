@@ -7,10 +7,9 @@
       get_url: 
         url: "{{nopecommerce_download_url}}"
         dest: "{{nopecommerce_download_destination}}"
-      notify: 
-        - Installed microsoft packages
-            
-        
+      notify:
+      - Installed microsoft packages
+
     - name: Install a .deb package
       apt:
         update_cache: yes
@@ -72,7 +71,7 @@
   handlers:
     - name: Installed microsoft packages
       debug:
-        msg: "Microsoft Packages Installed"      
+        msg: Installed microsoft packages     
     - name: Installed .deb packages
       debug:
         msg: ".deb packages installed"
