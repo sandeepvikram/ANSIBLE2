@@ -56,7 +56,11 @@
         name: nopCommerce440.service
         state: started
         enabled: yes
-     
+    - name: Restart nginx
+      service:
+        name: "{{nopecommerce_nginx_package}}"
+        enabled: yes
+        state: restarted 
   
 
 
