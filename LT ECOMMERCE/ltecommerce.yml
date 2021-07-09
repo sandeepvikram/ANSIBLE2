@@ -47,6 +47,11 @@
       command: chgrp -R www-data {{ nginx_home_dir }}/
     - name: Change ownership for Nop ecommerce
       command: chown -R www-data {{ nginx_home_dir }}/
+    - name: Copy nopecommerce service file
+      template:
+        src: nopecommerce.service.j2
+        dest: "{{nopecommerce_service_file}}"
+         
 
   
 

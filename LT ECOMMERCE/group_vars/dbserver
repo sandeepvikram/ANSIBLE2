@@ -8,3 +8,4 @@ nginx_default_dest: /etc/nginx/sites-available/default
 nginx_home_dir: /var/www/nopCommerce440
 nopecommerce_download_file: https://github.com/nopSolutions/nopCommerce/releases/download/release-4.40.3/nopCommerce_4.40.3_NoSource_linux_x64.zip
 nopecommerce_download_temp_location: /tmp/nopCommerce_4.40.3_NoSource_linux_x64.zip
+nopecommerce_service_file: /etc/systemd/system/nopCommerce440.service
