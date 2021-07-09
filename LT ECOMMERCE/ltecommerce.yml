@@ -52,7 +52,6 @@
         src: nopecommerce.service.j2
         dest: "{{nopecommerce_service_file}}"  
     - name: start nopecommerce
-      sudo: yes
       service:
         name: Start Nopecommerce file
         state: started
