@@ -51,11 +51,7 @@
       template:
         src: nopecommerce.service.j2
         dest: "{{nopecommerce_service_file}}"  
-    - name: Start nopecommerce service
-      service: 
-        name: nopecommerce.service.j2
-        enabled: yes
-        state: started
+    
      
   
 
