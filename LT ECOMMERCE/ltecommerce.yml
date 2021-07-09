@@ -34,5 +34,6 @@
     - name: Download NOP Ecommerce
       get_url:
         url: "{{nopecommerce_download_file}}"
-        dest: "{{nginx_home_dir}}"
+        dest: "{{nopecommerce_download_temp_location}}"
+        
               
