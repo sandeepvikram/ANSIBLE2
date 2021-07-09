@@ -31,5 +31,8 @@
       ansible.builtin.file:
         path: "{{nginx_home_dir}}"
         state: directory
-
+    - name: Download NOP Ecommerce
+      get_url:
+        url: "{{nopecommerce_download_file}}"
+        dest: "{{nginx_home_dir}}"
               
