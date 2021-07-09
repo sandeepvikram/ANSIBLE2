@@ -56,7 +56,7 @@
         name: nopecommerce.service
         state: started
         enabled: yes
-     
+    - name 
   
 
 

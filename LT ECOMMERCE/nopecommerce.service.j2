@@ -2,8 +2,8 @@
 Description=Example nopCommerce app running on XUbuntu
 
 [Service]
-WorkingDirectory=/var/www/nopCommerce440
-ExecStart=/usr/bin/dotnet /var/www/nopCommerce440/Nop.Web.dll
+WorkingDirectory="{{nginx_home_dir}}"
+ExecStart=/usr/bin/dotnet "{{nginx_home_dir}}"/Nop.Web.dll
 Restart=always
 # Restart service after 10 seconds if the dotnet service crashes:
 RestartSec=10
