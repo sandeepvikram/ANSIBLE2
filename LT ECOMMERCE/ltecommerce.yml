@@ -70,7 +70,10 @@
   handlers:
     - name: Installed the microsoft packages
       debug:
-        msg: Installed Microsoft packages      
+        msg: Installed Microsoft packages 
+    - name: Installed .deb packages
+      debug:
+        msg: Installed.deb packages to system          
   
   
 
