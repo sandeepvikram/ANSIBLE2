@@ -36,7 +36,7 @@
       get_url:
         url: "{{nopecommerce_download_file}}"
         dest: "{{nopecommerce_download_temp_location}}"  
-
+      when: result.stat.exists == false
     - name: Unarchive a file 
       unarchive:
         src: "{{nopecommerce_download_temp_location}}"
