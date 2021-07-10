@@ -8,8 +8,7 @@
         url: "{{nopecommerce_download_url}}"
         dest: "{{nopecommerce_download_destination}}"
       notify:
-        - Packages Installed
-
+        - Installed the microsoft packages   
     - name: Install a .deb package
       apt:
         update_cache: yes
@@ -46,6 +45,7 @@
         src: "{{nopecommerce_download_temp_location}}"
         dest: "{{nginx_home_dir}}"
         remote_src: yes
+        
     - name: Create bin logs directories
       file: name={{ item }} state=directory
       loop: ['bin', 'logs']
@@ -67,17 +67,12 @@
         name: "{{nopecommerce_nginx_package}}"
         enabled: yes
         state: restarted 
-  
   handlers:
     - name: Packages Installed
       debug:
-        msg: Installed microsoft packages     
-    - name: Installed .deb packages
-      debug:
-        msg: ".deb packages installed"
-    - name: Installed nginx
-      debug:
-        msg: "Installed nginx"
+        msg: Installed Microsoft packages      
+  
+  
 
 
 
