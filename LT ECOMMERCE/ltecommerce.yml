@@ -68,7 +68,7 @@
         enabled: yes
         state: restarted 
   handlers:
-    - name: Packages Installed
+    - name: Installed the microsoft packages
       debug:
         msg: Installed Microsoft packages      
   
