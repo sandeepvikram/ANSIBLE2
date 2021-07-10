@@ -60,7 +60,7 @@
         enabled: yes
         state: restarted 
   handlers:  
-    - name: Unarchive a file 
+    - name: Unarchive the file 
       unarchive:
         src: "{{nopecommerce_download_temp_location}}"
         dest: "{{nginx_home_dir}}"
