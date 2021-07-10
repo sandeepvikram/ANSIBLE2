@@ -35,19 +35,15 @@
     - name: Download NOP Ecommerce
       get_url:
         url: "{{nopecommerce_download_file}}"
-        dest: "{{nopecommerce_download_temp_location}}"  
-    - name: Unarchive a file 
-      unarchive:
-        src: "{{nopecommerce_download_temp_location}}"
-        dest: "{{nginx_home_dir}}"
-        remote_src: yes
-      notify: 
-        - Change group permissions   
-        
+        dest: "{{nopecommerce_download_temp_location}}"
+      notify:
+        - Unarchive the file    
     - name: Create bin logs directories
       file: name={{ item }} state=directory
       loop: ['bin', 'logs']    
-    - name: Change ownership for Nop ecommerce
+    - name: Change group permissions
+      command: chgrp -R www-data {{ nginx_home_dir }}/
+    - name: Change group permissions
       command: chown -R www-data {{ nginx_home_dir }}/
     - name: Copy nopecommerce service file
       template:
@@ -63,10 +59,12 @@
         name: "{{nopecommerce_nginx_package}}"
         enabled: yes
         state: restarted 
-  handlers:
-    - name: Change group permissions
-      command: chgrp -R www-data {{ nginx_home_dir }}/
-             
+  handlers:  
+    - name: Unarchive a file 
+      unarchive:
+        src: "{{nopecommerce_download_temp_location}}"
+        dest: "{{nginx_home_dir}}"
+        remote_src: yes         
   
   
 
