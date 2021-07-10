@@ -54,12 +54,10 @@
     - name: Copy nopecommerce service file
       template:
         src: nopecommerce.service.j2
-        dest: "{{nopecommerce_service_file}}"  
-    - name: Enable nopecommerce service file
-      ansible.builtin.systemd:
-        name: nopCommerce440.service
-        state: started
-        enabled: yes
+        dest: "{{nopecommerce_service_file}}" 
+      notify: 
+        - Restart and start service files   
+    
     - name: Restart nginx
       service:
         name: "{{nopecommerce_nginx_package}}"
@@ -69,7 +67,13 @@
     - name: Change group permissions
       command: chgrp -R www-data {{ nginx_home_dir }}/
     - name: Change group permissions
-      command: chown -R www-data {{ nginx_home_dir }}/  
+      command: chown -R www-data {{ nginx_home_dir }}/ 
+    - name: Restart and start service files
+      ansible.builtin.systemd:
+        name: nopCommerce440.service
+        state: started
+        enabled: yes
+         
              
   
   
