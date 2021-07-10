@@ -60,17 +60,19 @@
         name: nopCommerce440.service
         state: started
         enabled: yes
-    - name: Restart nginx
-      service:
-        name: "{{nopecommerce_nginx_package}}"
-        enabled: yes
-        state: restarted 
+      notify:
+        - Restart nginx  
+     
   handlers:
     - name: Change group permissions
       command: chgrp -R www-data {{ nginx_home_dir }}/
     - name: Change group permissions
       command: chown -R www-data {{ nginx_home_dir }}/  
-             
+    - name: Restart nginx
+      service:
+        name: "{{nopecommerce_nginx_package}}"
+        enabled: yes
+        state: restarted         
   
   
 
