@@ -7,8 +7,6 @@
       get_url: 
         url: "{{nopecommerce_download_url}}"
         dest: "{{nopecommerce_download_destination}}"
-    - debug:
-          msg: "Ansible When File Not Present Example."
       when: result.stat.exists == false   
     - name: Install a .deb package
       apt:
