@@ -6,14 +6,11 @@
     - name: Getting the microsoft packages
       get_url: 
         url: "{{nopecommerce_download_url}}"
-        dest: "{{nopecommerce_download_destination}}"
-      when: result.stat.exists == false   
+        dest: "{{nopecommerce_download_destination}}"   
     - name: Install a .deb package
       apt:
         update_cache: yes
-        deb: "{{nopecommerce_download_destination}}"
-      notify: 
-        - Installed .deb packages    
+        deb: "{{nopecommerce_download_destination}}"    
     - name: Install dotnet packages
       apt:
         name: "{{nopecommerce_dotnet_packages}}"
@@ -68,12 +65,10 @@
         enabled: yes
         state: restarted 
   handlers:
-    - name: Installed the microsoft packages
+    - name: Installed nginx
       debug:
-        msg: Installed Microsoft packages 
-    - name: Installed .deb packages
-      debug:
-        msg: Installed.deb packages to system          
+        msg: Installed Nginx packages 
+             
   
   
 
