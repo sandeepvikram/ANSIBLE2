@@ -1,12 +1,13 @@
 ---
 - name: Installing Orange HRM
-  hosts: all
   become: yes
+  hosts: all
   tasks:
-    - name: Update and upgrade apt packages
+    - name: Install apache 2
       apt:
-      upgrade: dist
-      update_cache: yes
+        name: "{{apache2_software_download}}"
+        update_cache: yes
+        state: present
     - name: Install Software properties
       apt:
         name: "{{software_properties_download}}"
