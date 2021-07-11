@@ -11,4 +11,9 @@
     - name: Install Software properties
       apt:
         name: "{{software_properties_download}}"
-        state: present    
+        state: present 
+    - name: Add a repository for php
+      ansible.builtin.apt_repository:
+        repo: "{{add_apt_repository}}"
+        update_cache: yes
+        state: present       
