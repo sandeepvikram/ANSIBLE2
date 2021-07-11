@@ -6,8 +6,8 @@
     - name: Install apache 2
       apt:
         name: "{{apache2_software_download}}"
-        update_cache: yes
         upgrade: yes
+        update_cache: yes
         state: present
     - name: Install Software properties
       apt:
