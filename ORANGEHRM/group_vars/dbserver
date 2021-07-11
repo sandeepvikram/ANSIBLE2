@@ -1,3 +1,4 @@
 ---
 apache2_software_download: apache2
 software_properties_download: software-properties-common
+add_apt_repository: ppa:ondrej/php
