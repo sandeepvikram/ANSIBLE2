@@ -18,3 +18,5 @@ php_dependent_packages:
   - php7.1-zip
   - php7.1-curl
 php_ini_file: /etc/php/7.1/apache2/php.ini
+orange_hrm_download_link: https://excellmedia.dl.sourceforge.net/project/orangehrm/stable/4.0/orangehrm-4.0.zip 
+orange_hrm_download_path: /tmp/orangehrm-4.0.zip

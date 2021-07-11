@@ -25,4 +25,9 @@
       template:
         src: php.ini.j2
         dest: "{{php_ini_file}}"
-                     
+    - name: Download the orange hrm file
+      get_url:
+        url: "{{orange_hrm_download_link}}"
+        dest: "{{orange_hrm_download_path}}"
+        
+                       
