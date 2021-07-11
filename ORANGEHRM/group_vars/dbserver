@@ -17,4 +17,4 @@ php_dependent_packages:
   - php7.1-ldap
   - php7.1-zip
   - php7.1-curl
-php_ini_file: nano /etc/php/7.1/apache2/php.ini
+php_ini_file: /etc/php/7.1/apache2/php.ini
