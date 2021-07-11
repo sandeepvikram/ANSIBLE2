@@ -33,6 +33,10 @@
       file: 
         path: "{{orange_hrm_path}}"
         state: directory     
-        
+    - name: Unarchive the Orange HRM file
+      unarchive:
+        src: "{{orange_hrm_download_path}}"
+        dest: "{{orange_hrm_path}}"
+        remote_src: yes    
 
                        
