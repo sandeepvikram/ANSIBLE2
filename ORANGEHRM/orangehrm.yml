@@ -54,7 +54,7 @@
     - name: Change the permissions of the site
       command: sudo a2enmod rewrite
     - name: Enable apache2
-      command: sudo systemctl start apache2.service
+      command: sudo systemctl start "{{apache2_software_download}}"
     - name: Enable apache2
       command: sudo systemctl enable apache2.service
     - name: Enable apache2
