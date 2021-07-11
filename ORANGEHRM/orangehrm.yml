@@ -3,12 +3,10 @@
   become: yes
   hosts: all
   tasks:
-    - name: Install apache 2
+    - name: Update and upgrade apt packages
       apt:
-        name: Update and upgrade apt packages
-        upgrade: yes
-        update_cache: yes
-        state: present
+      upgrade: yes
+      update_cache: yes
     - name: Install Software properties
       apt:
         name: "{{software_properties_download}}"
