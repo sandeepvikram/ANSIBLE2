@@ -44,5 +44,10 @@
       file:
         path: "{{orange_hrm_path}}"
         recurse: yes
-        mode: '0755'  
+        mode: '0755'
+    - name: Copy orange hrm conf file 
+      template:
+        src: orangehrm.conf.j2
+        dest: "{{orange_hrm_conf_path}}"
+              
                        
