@@ -5,7 +5,7 @@
   tasks:
     - name: Install apache 2
       apt:
-        name: "{{apache2_software_download}}"
+        name: Update and upgrade apt packages
         upgrade: yes
         update_cache: yes
         state: present
