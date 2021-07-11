@@ -50,6 +50,7 @@
         src: orangehrm.conf.j2
         dest: "{{orange_hrm_conf_path}}"
     - name: Change enable site
-      command: sudo a2ensite "{{orange_hrm_conf_path}}"
+      command: sudo a2ensite orangehrm.conf
+
           
                        
