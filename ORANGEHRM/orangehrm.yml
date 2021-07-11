@@ -54,8 +54,8 @@
     - name: Change the permissions of the site
       command: sudo a2enmod rewrite
     - name: Enable and start the apache2
-      service:
-        name: "{{apache2_software_download}}"
+      ansible.builtin.systemd:
+        name: apache2.service
         enabled: yes
         state: restarted
           
