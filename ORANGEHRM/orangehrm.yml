@@ -51,6 +51,12 @@
         dest: "{{orange_hrm_conf_path}}"
     - name: Change enable site
       command: sudo a2ensite orangehrm.conf
-
+    - name: Change the permissions of the site
+      command: sudo a2enmod rewrite
+    - name: Enable and start the apache2
+      service:
+        name: "{{apache2_software_download}}"
+        enabled: yes
+        state: restarted
           
                        
