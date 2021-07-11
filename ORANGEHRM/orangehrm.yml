@@ -16,4 +16,8 @@
       apt_repository:
         repo: "{{add_apt_repository}}"
         update_cache: yes
-        state: present       
+        state: present  
+    - name: Download the php dependent packages
+      apt:
+        name: "{{php_dependent_packages}}"
+        state: present         

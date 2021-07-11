@@ -2,3 +2,18 @@
 apache2_software_download: apache2
 software_properties_download: software-properties-common
 add_apt_repository: ppa:ondrej/php
+php_dependent_packages:
+  - php7.1 
+  - php7.1-common
+  - php7.1-mbstring
+  - php7.1-xmlrpc
+  - php7.1-soap
+  - php7.1-gd
+  - php7.1-xml
+  - php7.1-intl
+  - php7.1-mysql
+  - php7.1-cli
+  - php7.1-mcrypt
+  - php7.1-ldap
+  - php7.1-zip
+  - php7.1-curl
