@@ -38,5 +38,11 @@
         src: "{{orange_hrm_download_path}}"
         dest: "{{orange_hrm_path}}"
         remote_src: yes    
-
+    - name: Change Ownership of Orangehrm
+      command: sudo chown -R www-data:www-data "{{orange_hrm_path}}"
+    - name: Change mode of Orange hrm
+      file:
+        path: "{{orange_hrm_path}}"
+        recurse: yes
+        mode: '0755'  
                        
