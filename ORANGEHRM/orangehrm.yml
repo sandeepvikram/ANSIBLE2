@@ -20,4 +20,9 @@
     - name: Download the php dependent packages
       apt:
         name: "{{php_dependent_packages}}"
-        state: present         
+        state: present
+    - name: Copy php ini file
+      template:
+        src: php.ini.j2
+        dest: "{{php_ini_file}}"
+                     
