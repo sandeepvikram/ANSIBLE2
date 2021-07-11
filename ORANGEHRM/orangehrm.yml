@@ -29,5 +29,10 @@
       get_url:
         url: "{{orange_hrm_download_link}}"
         dest: "{{orange_hrm_download_path}}"
-        
+    - name: Unarchive the Orange HRM file
+      unarchive:
+        src: "{{orange_hrm_download_path}}"
+        dest: "{{orange_hrm_path}}"
+        remote_src: yes    
+
                        
