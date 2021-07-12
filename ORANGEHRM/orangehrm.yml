@@ -22,10 +22,13 @@
 
     - name: Sets the root password 
       mysql_user: user=root password="{{ mysql_root_password }}" host=172.31.22.19  
-      
-    - name: Deletes anonymous MySQL server user for ansible_fqdn
-      mysql_user: user="" host="{{ ansible_fqdn }}" state="absent"        
 
+    - name: Deletes anonymous MySQL server user for ansible_fqdn
+      mysql_user: user="" host="{{ ansible_fqdn }}" state="absent"    
+          
+    - name: Secures the MySQL root user for server_hostname domain
+      mysql_user: user="root" password="{{ mysql_root_password }}" host="{{ ansible_fqdn }}" 
+       
     - name: Install Software properties
       apt:
         name: "{{software_properties_download}}"
