@@ -16,18 +16,8 @@
         state: present
         force: no   
 
-    - name: test mysql_secure_installation
-      mysql_secure_installation:
-        login_password: ''
-        new_password: password22
-        user: root
-        login_host: 172.31.22.19
-        hosts: ['172.31.22.19', '::1']
-        change_root_password: true
-        remove_anonymous_user: true
-        disallow_root_login_remotely: true
-        remove_test_db: true
-      register: mysql_secure        
+    - name: Sets the root password 
+      mysql_user: user=root password="{{ mysql_root_password }}" host=172.31.22.19        
 
     - name: Install Software properties
       apt:
