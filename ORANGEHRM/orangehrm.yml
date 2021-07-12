@@ -9,7 +9,7 @@
         update_cache: yes
         state: present
     - name: ensure the apache2 service is running
-      service:
+      systemd:
         name: 'apache2'
         enabled: yes
         state: started     
