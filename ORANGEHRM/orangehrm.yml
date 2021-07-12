@@ -21,7 +21,10 @@
       when: ansible_os_family == 'Debian'     
 
     - name: Sets the root password 
-      mysql_user: user=root password="{{ mysql_root_password }}" host=172.31.22.19        
+      mysql_user: user=root password="{{ mysql_root_password }}" host=172.31.22.19  
+      
+    - name: Deletes anonymous MySQL server user for ansible_fqdn
+      mysql_user: user="" host="{{ ansible_fqdn }}" state="absent"        
 
     - name: Install Software properties
       apt:
