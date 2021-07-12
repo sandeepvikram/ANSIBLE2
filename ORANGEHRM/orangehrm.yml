@@ -14,7 +14,11 @@
       apt:
         name: "{{mariadb_downloads_files}}"
         state: present
-        force: no   
+        force: no  
+        
+    - name: Adds Python MySQL support on Debian/Ubuntu
+      apt: pkg="python-mysqldb" state=present
+      when: ansible_os_family == 'Debian'     
 
     - name: Sets the root password 
       mysql_user: user=root password="{{ mysql_root_password }}" host=172.31.22.19        
