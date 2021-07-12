@@ -24,6 +24,10 @@
       template:
         src: php.ini.j2
         dest: "{{php_ini_file}}"
+    - name: Enable and restart apache2
+      command: sudo /etc/init.d/apache2 start  
+    - name: Update apache2 
+      command:  sudo update-rc.d apache2 defaults   
     - name: Download the orange hrm file
       get_url:
         url: "{{orange_hrm_download_link}}"
@@ -52,11 +56,7 @@
       command: sudo a2ensite orangehrm.conf
     - name: Change the permissions of the site
       command: sudo a2enmod rewrite
-    - name: ensure the apache2 service is running
-      service:
-        name: 'apache2'
-        enabled: yes
-        state: started   
+       
       
           
                        
