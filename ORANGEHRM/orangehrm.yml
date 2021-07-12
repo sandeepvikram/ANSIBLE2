@@ -3,9 +3,12 @@
   become: yes
   hosts: all
   tasks:
-    - name: Install apache2
-      apt: name={{ item }} update_cache=yes state=latest
-      loop: [ 'apache2' ]
+    - name: Download apache2
+      apt:
+        name: apache2
+        update_cache: yes
+        state: present
+        autoclean: yes
     - name: Enable and start the apache2
       ansible.builtin.systemd:
         name: apache2
