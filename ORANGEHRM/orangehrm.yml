@@ -50,7 +50,7 @@
       unarchive:
         src: "{{orange_hrm_download_path}}"
         dest: "{{orange_hrm_path}}"
-        creates: "{{orange_hrm_path_notdouble}}"
+        creates: "{{orange_hrm_path}}" 
         remote_src: yes
     - name: Change Ownership of Orangehrm
       command: sudo chown -R www-data:www-data "{{orange_hrm_path}}"
