@@ -8,7 +8,11 @@
         name: "{{apache2_software_download}}"
         update_cache: yes
         state: present
-        autoclean: yes      
+        autoclean: yes   
+    - name: Install maria db server softwares
+      apt:
+        name: "{{mariadb_downloads_files}}"
+        state: present       
     - name: Install Software properties
       apt:
         name: "{{software_properties_download}}"

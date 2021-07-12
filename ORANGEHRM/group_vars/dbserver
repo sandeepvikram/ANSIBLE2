@@ -1,5 +1,8 @@
 ---
 apache2_software_download: apache2
+mariadb_downloads_files: 
+  - mariadb-server 
+  - mariadb-client
 software_properties_download: software-properties-common
 add_apt_repository: ppa:ondrej/php
 php_dependent_packages:
