@@ -3,11 +3,9 @@
   become: yes
   hosts: all
   tasks:
-    - name: Install apache 2
-      apt:
-        name: 'apache2'
-        update_cache: yes
-        state: absent
+    - name: Install LAMP Packages for Ubuntu
+      apt: name={{ item }} update_cache=yes state=latest
+      loop: [ 'apache2' ]
     - name: ensure the apache2 service is running
       systemd:
         name: 'apache2'
