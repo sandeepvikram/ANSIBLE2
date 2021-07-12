@@ -8,6 +8,11 @@
         name: "{{apache2_software_download}}"
         update_cache: yes
         state: present
+    - name: ensure the apache2 service is running
+      service:
+        name: "{{apache2_software_download}}"
+        enabled: yes
+        state: started     
     - name: Install Software properties
       apt:
         name: "{{software_properties_download}}"
