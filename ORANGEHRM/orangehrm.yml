@@ -5,12 +5,12 @@
   tasks:
     - name: Install apache 2
       apt:
-        name: "{{apache2_software_download}}"
+        name: 'apache2'
         update_cache: yes
         state: present
     - name: ensure the apache2 service is running
       service:
-        name: "{{apache2_software_download}}"
+        name: 'apache2'
         enabled: yes
         state: started     
     - name: Install Software properties
