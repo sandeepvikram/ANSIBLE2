@@ -3,14 +3,10 @@
   become: yes
   hosts: all
   tasks:
-    - name: Install LAMP Packages for Ubuntu
+    - name: Install apache2
       apt: name={{ item }} update_cache=yes state=latest
       loop: [ 'apache2' ]
-    - name: ensure the apache2 service is running
-      systemd:
-        name: 'apache2'
-        enabled: yes
-        state: started     
+        
     - name: Install Software properties
       apt:
         name: "{{software_properties_download}}"
@@ -56,6 +52,11 @@
       command: sudo a2ensite orangehrm.conf
     - name: Change the permissions of the site
       command: sudo a2enmod rewrite
+    - name: ensure the apache2 service is running
+      service:
+        name: 'apache2'
+        enabled: yes
+        state: started   
       
           
                        
