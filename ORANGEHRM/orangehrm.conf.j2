@@ -1,13 +1,16 @@
 <VirtualHost *:80>
-ServerAdmin admin@ec2-18-222-98-110.us-east-2.compute.amazonaws.com
-ServerName ec2-18-222-98-110.us-east-2.compute.amazonaws.com
-DocumentRoot /var/www/html/orangehrm
-<Directory /var/www/html/orangehrm>
-Options -Indexes +FollowSymLinks +MultiViews
-AllowOverride All
-Require all granted
-</Directory>
-ErrorLog ${APACHE_LOG_DIR}/orangehrm-error.log
-CustomLog ${APACHE_LOG_DIR}/orangehrm-access.log combined
-</VirtualHost>
+     ServerAdmin admin@example.com
+     DocumentRoot /var/www/html/orangehrm
+     ServerName example.com
+     ServerAlias www.example.com
+
+     <Directory /var/www/html/orangehrm/>
+        Options +FollowSymlinks
+        AllowOverride All
+        Require all granted
+     </Directory>
+
+     ErrorLog ${APACHE_LOG_DIR}/error.log
+     CustomLog ${APACHE_LOG_DIR}/access.log combined
+
 </VirtualHost>
