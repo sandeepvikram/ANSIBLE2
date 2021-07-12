@@ -56,7 +56,7 @@
     - name: Change the permissions of the site
       command: sudo a2enmod rewrite
     - name: Enable apache2
-      apt:
+      service:
         name: "{{apache2_software_download}}"
         enable: yes
         state: started  
