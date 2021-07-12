@@ -46,7 +46,24 @@
       unarchive:
         src: "{{orange_hrm_download_path}}"
         dest: "{{orange_hrm_path}}"
-        remote_src: yes         
+        remote_src: yes
+    - name: Change Ownership of Orangehrm
+      command: sudo chown -R www-data:www-data "{{orange_hrm_path}}"
+    - name: Change mode of Orange hrm
+      file:
+        path: "{{orange_hrm_path}}"
+        recurse: yes
+        mode: '0755'
+    - name: Copy orange hrm conf file 
+      template:
+        src: orangehrm.conf.j2
+        dest: "{{orange_hrm_conf_path}}"
+    - name: Change enable site
+      command: sudo a2ensite orangehrm.conf
+    - name: Change the permissions of the site
+      command: sudo a2enmod rewrite
+    - name: Start apache2 
+      command: sudo systemctl restart apache2.service             
       
        
       
