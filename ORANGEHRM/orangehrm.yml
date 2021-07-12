@@ -52,8 +52,11 @@
         dest: "{{orange_hrm_path}}"
         creates: "{{orange_hrm_path}}" 
         remote_src: yes
-    - name: Change Ownership of Orangehrm
-      command: sudo chown -R www-data:www-data "{{orange_hrm_path}}"
+    - name: chown to username you login and chmod as required
+      file:
+      path: "{{orange_hrm_path}}"
+      owner: www-data
+      group: www-data
     - name: Change mode of Orange hrm
       file:
         path: "{{orange_hrm_path}}"
