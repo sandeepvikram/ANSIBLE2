@@ -12,7 +12,7 @@
     - name: Stop the apache2
       command: sudo systemctl stop apache2.service
     - name: Start apache2 
-      commnd: sudo systemctl start apache2.service
+      command: sudo systemctl start apache2.service
     - name: Enable apache2
       command: sudo systemctl enable apache2.service   
         
