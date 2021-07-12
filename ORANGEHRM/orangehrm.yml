@@ -5,17 +5,10 @@
   tasks:
     - name: Download apache2
       apt:
-        name: apache2
+        name: "{{apache2_software_download}}"
         update_cache: yes
         state: present
-        autoclean: yes
-    - name: Stop the apache2
-      command: sudo systemctl stop apache2.service
-    - name: Enable apache2
-      command: sudo systemctl enable apache2.service   
-    
-      
-        
+        autoclean: yes      
     - name: Install Software properties
       apt:
         name: "{{software_properties_download}}"
@@ -62,8 +55,12 @@
       command: sudo a2ensite orangehrm.conf
     - name: Change the permissions of the site
       command: sudo a2enmod rewrite
-    - name: Start apache2 
-      command: sudo systemctl restart apache2.service             
+    - name: Enable apache2
+      apt:
+        name: "{{apache2_software_download}}"
+        enable: yes
+        state: started  
+                
       
        
       
