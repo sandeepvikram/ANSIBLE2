@@ -14,7 +14,7 @@
     - name: Enable apache2
       command: sudo systemctl enable apache2.service   
     - name: Start apache2 
-      command: sudo systemctl start apache2.service
+      command: sudo systemctl restart apache2.service
       
         
     - name: Install Software properties
