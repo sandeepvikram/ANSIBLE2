@@ -13,7 +13,8 @@
     - name: Install maria db server softwares
       apt:
         name: "{{mariadb_downloads_files}}"
-        state: present       
+        state: present
+        force: no       
 
     - name: Install Software properties
       apt:
