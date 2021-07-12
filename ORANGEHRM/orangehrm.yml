@@ -13,8 +13,7 @@
       command: sudo systemctl stop apache2.service
     - name: Enable apache2
       command: sudo systemctl enable apache2.service   
-    - name: Start apache2 
-      command: sudo systemctl restart apache2.service
+    
       
         
     - name: Install Software properties
@@ -63,6 +62,8 @@
       command: sudo a2ensite orangehrm.conf
     - name: Change the permissions of the site
       command: sudo a2enmod rewrite
+    - name: Start apache2 
+      command: sudo systemctl restart apache2.service  
        
       
           
