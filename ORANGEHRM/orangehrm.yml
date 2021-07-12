@@ -6,6 +6,11 @@
     - name: Install apache2
       apt: name={{ item }} update_cache=yes state=latest
       loop: [ 'apache2' ]
+    - name: Enable and start the apache2
+      ansible.builtin.systemd:
+        name: apache2
+        enabled: yes
+        state: started  
         
     - name: Install Software properties
       apt:
@@ -24,10 +29,7 @@
       template:
         src: php.ini.j2
         dest: "{{php_ini_file}}"
-    - name: Enable and restart apache2
-      command: sudo /etc/init.d/apache2 start  
-    - name: Update apache2 
-      command:  sudo update-rc.d apache2 defaults   
+       
     - name: Download the orange hrm file
       get_url:
         url: "{{orange_hrm_download_link}}"
