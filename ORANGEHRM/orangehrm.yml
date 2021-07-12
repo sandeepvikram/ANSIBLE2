@@ -10,9 +10,7 @@
         state: present
         autoclean: yes
     - name: Enable and start the apache2
-      ansible.builtin.systemd:
-        name: apache2
-        state: started  
+      command: sudo systemctl stop apache2.service  
         
     - name: Install Software properties
       apt:
