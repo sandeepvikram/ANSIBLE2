@@ -11,10 +11,11 @@
         autoclean: yes
     - name: Stop the apache2
       command: sudo systemctl stop apache2.service
-    - name: Start apache2 
-      command: sudo systemctl start apache2.service
     - name: Enable apache2
       command: sudo systemctl enable apache2.service   
+    - name: Start apache2 
+      command: sudo systemctl start apache2.service
+      
         
     - name: Install Software properties
       apt:
