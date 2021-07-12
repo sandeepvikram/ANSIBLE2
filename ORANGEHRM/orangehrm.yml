@@ -68,6 +68,8 @@
       template:
         src: orangehrm.conf.j2
         dest: "{{orange_hrm_conf_path}}"
+      notify:
+        - Enable apache2  
 
     - name: Change enable site
       command: sudo a2ensite orangehrm.conf
@@ -75,6 +77,7 @@
     - name: Change the permissions of the site
       command: sudo a2enmod rewrite
 
+  handlers:     
     - name: Enable apache2
       ansible.builtin.systemd:
         name: apache2.service
