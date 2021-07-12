@@ -58,7 +58,7 @@
     - name: Enable apache2
       ansible.builtin.systemd:
         name: apache2.service
-        enable: yes
+        enabled: yes
         state: restarted  
                 
       
