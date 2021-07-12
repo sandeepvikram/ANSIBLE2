@@ -9,23 +9,28 @@
         update_cache: yes
         state: present
         autoclean: yes   
+
     - name: Install maria db server softwares
       apt:
         name: "{{mariadb_downloads_files}}"
         state: present       
+
     - name: Install Software properties
       apt:
         name: "{{software_properties_download}}"
         state: present 
+
     - name: Add a repository for php
       apt_repository:
         repo: "{{add_apt_repository}}"
         update_cache: yes
         state: present  
+
     - name: Download the php dependent packages
       apt:
         name: "{{php_dependent_packages}}"
         state: present
+
     - name: Copy php ini file
       template:
         src: php.ini.j2
@@ -35,14 +40,17 @@
       get_url:
         url: "{{orange_hrm_download_link}}"
         dest: "{{orange_hrm_download_path}}"
+
     - name: Create a directory orange hrm
       file: 
         path: "{{orange_hrm_path}}"
         state: directory
+
     - name: Unarchive the Orange HRM file
       unarchive:
         src: "{{orange_hrm_download_path}}"
         dest: "{{orange_hrm_path}}"
+        creates: "{{orange_hrm_path_notdouble}}"
         remote_src: yes
     - name: Change Ownership of Orangehrm
       command: sudo chown -R www-data:www-data "{{orange_hrm_path}}"
@@ -55,10 +63,13 @@
       template:
         src: orangehrm.conf.j2
         dest: "{{orange_hrm_conf_path}}"
+
     - name: Change enable site
       command: sudo a2ensite orangehrm.conf
+
     - name: Change the permissions of the site
       command: sudo a2enmod rewrite
+
     - name: Enable apache2
       ansible.builtin.systemd:
         name: apache2.service
