@@ -12,7 +12,6 @@
     - name: Enable and start the apache2
       ansible.builtin.systemd:
         name: apache2
-        enabled: yes
         state: started  
         
     - name: Install Software properties
