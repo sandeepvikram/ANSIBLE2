@@ -54,9 +54,9 @@
         remote_src: yes
     - name: chown to username you login and chmod as required
       file:
-      path: "{{orange_hrm_path}}"
-      owner: www-data
-      group: www-data
+        path: "{{orange_hrm_path}}"
+        owner: www-data
+        group: www-data
     - name: Change mode of Orange hrm
       file:
         path: "{{orange_hrm_path}}"
