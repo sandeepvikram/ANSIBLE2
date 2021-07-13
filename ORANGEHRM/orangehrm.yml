@@ -84,9 +84,9 @@
         dest: "{{orange_hrm_conf_path}}"
       notify:
         - Enable apache2  
+        - Change enable site
 
-    - name: Change enable site
-      command: sudo a2ensite orangehrm.conf
+    
 
     - name: Change the permissions of the site
       command: sudo a2enmod rewrite
@@ -97,6 +97,8 @@
         name: apache2.service
         enabled: yes
         state: restarted  
+    - name: Change enable site
+      command: sudo a2ensite orangehrm.conf    
                 
       
        
