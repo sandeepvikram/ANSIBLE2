@@ -1,0 +1,14 @@
+---
+- name: Change the ownership of Springboot
+  file:
+    path: /usr/share/springpetclinic/spring-petclinic-2.4.2.jar
+    owner: "{{app_username}}"
+    mode: '500'
+    state: file
+- name: Packages Installed
+  debug:
+    msg: Installed "{{java_package}}" is installed.
+
+- name: Created a Directory
+  debug:
+    msg: Installed "{{app_dir}}" is Created    

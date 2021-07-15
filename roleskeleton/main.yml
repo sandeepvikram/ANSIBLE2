@@ -1,0 +1,7 @@
+---
+- name: install spring pet clinic
+  become: yes
+  hosts: appserver
+  roles:
+    - springpetclinic
+    - role: geerlingguy.mysql          #We include ansible galaxy collections from the hub in the roles as follows
